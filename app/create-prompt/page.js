@@ -31,7 +31,7 @@ const CreatePrompt = () => {
 
 
       if (response.ok) {
-        ruter.push("/");
+        ruter.push("/dashboard");
         console.log('router pushed');
         console.log(response);
       }

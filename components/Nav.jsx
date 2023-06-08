@@ -25,7 +25,7 @@ const Nav = () => {
        
         await signOut({
             redirect: true,
-            callbackUrl: 'http://localhost:3000/'
+            callbackUrl: `${window.location.origin}`
         });
         
     }
@@ -73,7 +73,9 @@ const Nav = () => {
         <button
          type="button" 
          key={provider.name} 
-        onClick={()=>signIn(provider.id)}
+        onClick={()=>signIn(provider.id, {
+            callbackUrl: `${window.location.origin}/dashboard`,
+          })}
         className="outline_btn z-50">
             Sign In
 

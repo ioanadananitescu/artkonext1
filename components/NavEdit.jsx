@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-const Navbar = () => {
+const Navedit = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
