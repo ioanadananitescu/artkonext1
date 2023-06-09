@@ -15,6 +15,11 @@ creator: {
   tag: {
     type: String,
     required: [true, 'Tag is required.'],
+  }, 
+
+  medium: {
+    type: String, 
+    required: [true, 'Please choose a medium']
   }
 });
 

@@ -12,7 +12,7 @@ export const connectToDB = async()=> {
 
     
         await mongoose.connect(process.env.MONGODB_URI, {
-            dbname: "NewDatabase",
+            dbname: "ArtkoNext1",
             useNewUrlParser: true,
             useUnifiedTopology: true, 
             
