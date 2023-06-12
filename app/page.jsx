@@ -3,6 +3,7 @@ import Feed from '@components/Feed';
 import Navbar from '@components/NavBar';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Analytics } from '@vercel/analytics/react';
 
 const Home = () => {
   
@@ -45,6 +46,7 @@ const Home = () => {
 </p>
 <Feed/>
       </section>
+      <Analytics/>
       </>
 
 
