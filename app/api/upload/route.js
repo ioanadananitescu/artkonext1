@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 export const POST=async (request)=> {
 
 
-    const{imageUrl}=request.body;
+    const{imageUrl}=await request.json();
     
     try {
       await mongoose.connect(process.env.MONGODB_URI, {
