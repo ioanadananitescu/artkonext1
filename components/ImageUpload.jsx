@@ -1,44 +1,58 @@
 'use client'
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const ImageUpload = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+ 
+  const[imageUrl, setImageUrl]=useState({imageUrl:" "});
 
   const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    setSelectedImage(URL.createObjectURL(file));
+    setSelectedImage(event.target.files[0]);
+   /*  setSelectedImage(URL.createObjectURL(file)); */
   };
 
   const handleSubmit = async () => {
-    try {
+    
       const formData = new FormData();
       formData.append('file', selectedImage);
-      formData.append('title', title);
-      formData.append('description', description);
+     
+     
+      formData.append('upload_preset', 'artkonext');
+try {
+      const data= await fetch('https://api.cloudinary.com/v1_1/dlel1msov/image/upload', 
+      {
+        method:'POST',
+        body:formData
+      }).then(r=>r.json());
 
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
+      const secureUrl=data.secure_url;
+      setImageUrl(secureUrl);
+  
+        
+        console.log('Image uploaded successfully!', data);
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Image uploaded successfully!', data.imageUrl);
-      } else {
+        console.log('the url that will be passed:', secureUrl);
+
+        await fetch('/api/upload',  {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          }, 
+          body: JSON.stringify({ imageUrl: secureUrl }),
+        } );
+  
+        console.log('Image URL sent to API and stored in the database.');
+
+      } catch (error) {
         console.error('Failed to upload image.');
       }
-    } catch (error) {
-      console.error('Failed to upload image.', error);
-    }
+  
   };
 
   return (
     <div>
       <input type="file" accept="image/*" onChange={handleFileUpload} />
-      <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
-      <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
       {selectedImage && (
         <div>
           <img src={selectedImage} alt="Selected" width="200" height="200" />

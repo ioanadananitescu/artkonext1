@@ -1,18 +1,13 @@
-import mongoose from 'mongoose';
+import {Schema, model, models} from 'mongoose';
 
-const imageSchema = new mongoose.Schema({
+const ImagineSchema = new Schema({
   imageUrl: {
     type: String,
-    required: true,
+    required: [true,'Please upload an url image'],
   },
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
+
 });
 
-export default mongoose.models.Image || mongoose.model('Image', imageSchema);
+const Imagine= models.Imagine || model('Imagine', ImagineSchema);
+
+export default Imagine;
