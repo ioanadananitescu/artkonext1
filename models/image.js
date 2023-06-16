@@ -1,14 +1,13 @@
-import { Schema, model, models } from 'mongoose';
+import {Schema, model, models} from 'mongoose';
 
-
-const ImageSchema = new Schema({
+const ImagineSchema = new Schema({
   imageUrl: {
     type: String,
-    required: [true, 'image is required']
-  }
-  
+    required: [true,'Please upload an url image'],
+  },
+
 });
 
-const Imagine = model("Imagine", ImageSchema);
+const Imagine= models.Imagine || model('Imagine', ImagineSchema);
 
 export default Imagine;

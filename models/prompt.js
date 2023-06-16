@@ -20,6 +20,11 @@ creator: {
   medium: {
     type: String, 
     required: [true, 'Please choose a medium']
+  }, 
+
+  imageUrl: {
+    type: String, 
+    required:[true, 'Set an image, please']
   }
 });
 

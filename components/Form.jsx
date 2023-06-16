@@ -7,9 +7,11 @@ import Image from "next/image";
 import { medium } from './data';
 
 
-const Form = ({ session, type, post, setPost, submitting, handleSubmit }) => {
+
+const Form = ({ session, type, post, setPost, submitting, handleSubmit, imgUrl }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(['']);
+  
   const handleSelectedValue = (event) => {
     setSelectedValue(event.target.value);
   }
@@ -20,13 +22,8 @@ const Form = ({ session, type, post, setPost, submitting, handleSubmit }) => {
   
   return (
     <section className='w-full max-w-full flex-start flex-col md:flex-row gap-8'>
-      <section className='relative max-lg:w-screen mx-auto flex start flex-col gap-5 items-center justify-center'>
-        <Image
-          width={200}
-          height={200}
-          alt="your profile image"
-          src={session?.user.image} 
-       
+{/*       <section className='relative max-lg:w-screen mx-auto flex start flex-col gap-5 items-center justify-center'>
+        <ImageUpload      
             />
         <p>You can add a new work </p>
         <div className='flex-end mx-3 mb-5 gap-4'>
@@ -46,7 +43,7 @@ const Form = ({ session, type, post, setPost, submitting, handleSubmit }) => {
           Back
           </button>
           </div>
-      </section>
+      </section> */}
 
       <section className='flex-start flex-col'>
       <h1 className='head_text text-left'>
@@ -106,6 +103,21 @@ required>
     <option key={e.id} value={e.name}>{e.name}</option>
     ))}
 </select>
+          </label>
+
+          <label>
+          <span className='font-satoshi font-semibold text-base text-gray-700'>
+            Image is stored in Cloudinary with the url{" "}
+           
+          </span>
+          <input
+            value={imgUrl}
+            onChange={(e) => setPost({ ...post, imageUrl: e.target.value })}
+            type='text'
+            placeholder='Image'
+            required
+            className='form_input'
+          />
           </label>
     
 

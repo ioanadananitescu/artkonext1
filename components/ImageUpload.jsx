@@ -1,91 +1,67 @@
 'use client'
 import React, { useState } from 'react';
-import axios from 'axios';
-import { connectToDB } from '@utils/database';
-import { Imagine } from '@models/image';
-import { data } from 'autoprefixer';
 
 
-const ImageUpload = ({img, setImg, handleSubmitDb}) => {
-  const [file, setFile] = useState(null);
-  const [filename, setFilename] = useState('');
-  const [imgUrl, setImgUrl] = useState('');
-  
 
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-    setFilename(event.target.files[0].name);
-  };
-
-  const handleSubmit = async (event, res) => {
-    event.preventDefault();
-   const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', 'artkonext');
-    
-try{
-  const response = await fetch('https://api.cloudinary.com/v1_1/dlel1msov/image/upload', {
-    method: 'POST',
-    body: formData
-  }).then((r)=>r.json());
-  const secureUrl = response.secure_url;
-  
-  setImgUrl(secureUrl);
-  console.log('Image loaded with the secure url:', secureUrl);
-  console.log('The result is:', response)
-  
-    } catch (error) {
-    console.error('Error uploading image:', error.message);
-    }
-
+const ImageUpload = () => {
+ const [selectedImage, setSelectedImage] = useState(null);
  
-        
+  const[imageUrl, setImageUrl]=useState({imageUrl:" "});
+
+  const handleFileUpload = (event) => {
+    setSelectedImage(event.target.files[0]);
+    setSelectedImage(URL.createObjectURL(file));
+     
+  }
+
+  const handleSubmit = async () => {
     
-    
-/*     const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset','artkonext');
-   
-      try {
-        const { data: response } = await axios.post(
-          'https://api.cloudinary.com/v1_1/dlel1msov/image/upload',
-          formData
-        );
-        console.log(response);
- 
-      
+      const formData = new FormData();
+      formData.append('file', selectedImage);
+     
+     
+      formData.append('upload_preset', 'artkonext');
+try {
+      const data= await fetch('https://api.cloudinary.com/v1_1/dlel1msov/image/upload', 
+      {
+        method:'POST',
+        body:formData
+      }).then(r=>r.json());
+
+      const secureUrl=data.secure_url;
+      setImageUrl(secureUrl);
+  
         
-      
+        console.log('Image uploaded successfully!', data);
+
+        console.log('the url that will be passed:', secureUrl);
+
+        await fetch('/api/upload',  {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          }, 
+          body: JSON.stringify({ imageUrl: secureUrl }),
+        } );
+  
+        console.log('Image URL sent to API and stored in the database.');
+
       } catch (error) {
-        console.error(error);
-      } */
-    
-   
+        console.error('Failed to upload image.');
+      }
+  
   };
-
-
 
   return (
-    <>
-      <div>
-      <input type="file" accept="image/*" onChange={handleFileChange} />
-       
-        <label>{filename}</label>
-      </div>
-
-      <button className='px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white'
-        type="submit" onClick={handleSubmit}>Upload
-      </button>
-
-       <label>
-        <span>This is the img url</span>
-          <input className='form_input' value={{imgUrl}} placeholder='It will be displayed the url of the uploaded image'></input>
-      </label>
-      <button className='px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white'
-        type="submit" onClick={handleSubmitDb}>Upload to Mongodb
-      </button>
-    
-      </>
+    <div>
+      <input type="file" accept="image/*" onChange={handleFileUpload} />
+      {selectedImage && (
+        <div>
+          <img src={selectedImage} alt="Selected" width="200" height="200" />
+          <button onClick={handleSubmit}>Upload</button>
+        </div>
+      )}
+    </div>
   );
 };
 
