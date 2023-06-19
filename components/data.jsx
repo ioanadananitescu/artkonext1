@@ -14,5 +14,9 @@ export const medium= [
     {
         id: 4, 
         name: 'sculpture'
-    }
+    },
+    {
+        id: 5, 
+        name: 'acryl'
+    }, 
 ]

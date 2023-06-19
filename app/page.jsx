@@ -44,7 +44,7 @@ const Home = () => {
     
 <p className="desc text-center tracking-wide text-slate-500">Artko is an artist run platform that highlights other artists works.
 </p>
-<Feed/>
+        <Feed />
       </section>
       <Analytics/>
       </>

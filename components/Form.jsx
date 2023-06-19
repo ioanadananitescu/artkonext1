@@ -57,7 +57,26 @@ const Form = ({ session, type, post, setPost, submitting, handleSubmit, imgUrl }
       <form
         onSubmit={handleSubmit}
         className='mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism'
-      >
+        >
+          <label>
+            <div>
+             
+              <Image
+                src={imgUrl} width={200} height={200} />
+            </div>
+          <span className='font-satoshi font-semibold text-base text-gray-700'>
+            Image is stored in Cloudinary with the url{" "}
+           
+          </span>
+          <input
+            value={imgUrl}
+            onChange={(e) => setPost({ ...post, imageUrl: e.target.value })}
+            type='text'
+            placeholder='Image'
+            required
+            className='form_input'
+          />
+          </label>
         <label>
           <span className='font-satoshi font-semibold text-base text-gray-700'>
             Description
@@ -105,20 +124,7 @@ required>
 </select>
           </label>
 
-          <label>
-          <span className='font-satoshi font-semibold text-base text-gray-700'>
-            Image is stored in Cloudinary with the url{" "}
-           
-          </span>
-          <input
-            value={imgUrl}
-            onChange={(e) => setPost({ ...post, imageUrl: e.target.value })}
-            type='text'
-            placeholder='Image'
-            required
-            className='form_input'
-          />
-          </label>
+  
     
 
         <div className='flex-end mx-3 mb-5 gap-4'>

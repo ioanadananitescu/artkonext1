@@ -4,8 +4,25 @@ const nextConfig = {
       appDir: true,
       serverComponentsExternalPackages: ["mongoose"],
     },
-    images: {
+ /*    images: {
       domains: ['lh3.googleusercontent.com'],
+    }, */
+  
+    images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'lh3.googleusercontent.com',
+          port: '',
+          
+        },
+        {
+          protocol: 'https',
+          hostname: 'res.cloudinary.com',
+          port: '',
+          
+        },
+      ],
     },
     webpack(config) {
       config.experiments = {

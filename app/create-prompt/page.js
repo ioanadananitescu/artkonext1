@@ -14,7 +14,7 @@ const CreatePrompt = () => {
   const [submitting, setIsSubmitting] = useState(false);
   const [post, setPost] = useState({ prompt: "", tag: "", medium:"", imageUrl:"" });
   const [selectedImage, setSelectedImage] = useState(null);
-  const [imgUrl, setImgUrl] = useState({ imgUrl: " " });
+  const [imgUrl, setImgUrl] = useState({ imgUrl: "" });
 
 
 
@@ -31,7 +31,7 @@ const CreatePrompt = () => {
             userId: session?.user.id,
             tag: post.tag,
             medium: post.medium,
-            imageUrl:post.imageUrl
+            imageUrl:imgUrl
           }),
         });
         if (response.ok) {
@@ -47,7 +47,7 @@ const CreatePrompt = () => {
     };
     const handleFileUpload = (event) => {
       setSelectedImage(event.target.files[0]);
-      // setSelectedImage(URL.createObjectURL(event.target.files[0])); 
+     
     };
     const handleSubmit = async () => {
       const formData = new FormData();
