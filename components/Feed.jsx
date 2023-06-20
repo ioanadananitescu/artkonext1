@@ -6,7 +6,7 @@ import PromptCard from "./PromptCard";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
-    <div className='mt-16 '>
+    <div className='gap-2 flex sm:flex-col md:flex-row flex-wrap justify-center items-center md:w-screen -hue-rotate-60'>
       {data.map((post) => (
         <PromptCard
           key={post._id}
@@ -56,8 +56,8 @@ const Feed = () => {
   };
 
   return (
-    <section className='feed'>
-      <form className='relative w-full flex-center'>
+    <section className='mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2'>
+      <form className='relative w-full gap-3 flex-center'>
         <input
           type='text'
           placeholder='Search for a tag or a username'

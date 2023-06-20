@@ -13,7 +13,7 @@ const Home = () => {
 <Navbar />
    
          
-   <section className="w-full flex-center flex-col">
+   <section className="">
     <div className="relative">
           <Image
             width={1500}
@@ -41,10 +41,13 @@ const Home = () => {
             </button>
    
     </div>
-    
+    <div className='w-full flex-center flex-col'>
 <p className="desc text-center tracking-wide text-slate-500">Artko is an artist run platform that highlights other artists works.
 </p>
+</div>
+<div className='w-full'>
         <Feed />
+        </div>
       </section>
       <Analytics/>
       </>
