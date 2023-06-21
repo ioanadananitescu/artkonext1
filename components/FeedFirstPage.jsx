@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 
 import PromptCard from "./PromptCard";
 
+
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
-    <div className='gap-2 flex sm:flex-col md:flex-row flex-wrap justify-center items-center md:w-screen -hue-rotate-60'>
+    <div className='gap-2 flex sm:flex-col md:flex-row justify-center items-center md:w-screen'>
       {data.map((post) => (
         <PromptCard
           key={post._id}
@@ -18,7 +19,7 @@ const PromptCardList = ({ data, handleTagClick }) => {
   );
 };
 
-const Feed = () => {
+const FeedFirstPage = () => {
   const [allPosts, setAllPosts] = useState([]);
 
   // Search states
@@ -80,4 +81,4 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default FeedFirstPage;

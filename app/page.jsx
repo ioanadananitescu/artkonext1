@@ -1,5 +1,5 @@
 
-import Feed from '@components/Feed';
+import FeedFirstPage from '@components/FeedFirstPage';
 import Navbar from '@components/NavBar';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -46,8 +46,9 @@ const Home = () => {
 </p>
 </div>
 <div className='w-full'>
-        <Feed />
+        
         </div>
+        <FeedFirstPage/>
       </section>
       <Analytics/>
       </>

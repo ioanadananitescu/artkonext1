@@ -36,32 +36,37 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
         <div className="flex-auto ml-3 justify-evenly py-2">
                         <div className="flex flex-wrap ">
                             <div className="w-full flex-none text-xs text-blue-700 font-medium ">
+
+                            </div>
+                            <h2 className='flex-auto text-lg font-medium'>{post.prompt}</h2>
+                        </div>
               {/* //logged // creator user data                  */}
               <div
             className='flex-1 flex justify-start items-center gap-3 cursor-pointer'
             onClick={handleProfileClick}
           >
+
+           {/* //cretor post profile image, if he does one
             <Image
               src={post.creator.image}
               alt='user_image'
               width={40}
               height={40}
               className='rounded-full object-contain'
-            />
+            /> */}
 
             <div className='flex flex-col'>
-              <h3 className='font-satoshi font-semibold text-gray-900'>
+              <p className='font-satoshi font-semibold text-gray-900'>
+              
                 {post.creator.username}
-              </h3>
-              <p className='font-inter text-sm text-gray-500'>
-                {post.creator.email}
               </p>
+             {/*  <p className='font-inter text-sm text-gray-500'>
+                {post.creator.email}
+              </p> */}
             </div>
           </div>
            
-                            </div>
-                            <h2 className='flex-auto text-lg font-medium'>{post.prompt}</h2>
-                        </div>
+                        
                         <p className="mt-3"></p>
                         <div className="flex py-4  text-sm text-gray-600">
                             <div className="flex-1 inline-flex items-center">
