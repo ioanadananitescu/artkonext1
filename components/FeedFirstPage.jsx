@@ -7,7 +7,7 @@ import PromptCard from "./PromptCard";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
-    <div className='gap-2 flex sm:flex-col md:flex-row justify-center items-center md:w-screen'>
+    <div className='gap-2 flex sm:flex-col flex-wrap md:flex-row justify-center items-center md:w-screen'>
       {data.map((post) => (
         <PromptCard
           key={post._id}
