@@ -8,7 +8,8 @@ export const GET = async (request, { params }) => {
         const prompt = await Prompt.findById(params.id).populate("creator")
         if (!prompt) return new Response("Prompt Not Found", { status: 404 });
 
-        return new Response(JSON.stringify(prompt), { status: 200 })
+        return new Response(JSON.stringify(prompt), { status: 200 });
+        
 
     } catch (error) {
         return new Response("Internal Server Error", { status: 500 });
@@ -16,7 +17,7 @@ export const GET = async (request, { params }) => {
 }
 
 export const PATCH = async (request, { params }) => {
-    const { prompt, tag } = await request.json();
+    const { prompt, tag, medium, imageUrl } = await request.json();
 
     try {
         await connectToDB();
@@ -31,6 +32,8 @@ export const PATCH = async (request, { params }) => {
         // Update the prompt with new data
         existingPrompt.prompt = prompt;
         existingPrompt.tag = tag;
+        existingPrompt.medium = medium;
+        existingPrompt.imageUrl = imageUrl;
 
         await existingPrompt.save();
 

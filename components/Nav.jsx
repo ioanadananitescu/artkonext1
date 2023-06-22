@@ -55,7 +55,7 @@ const Nav = () => {
             className="outline_btn z-50">
                 Sign Out
             </button>
-            <Link href="/profile">
+            <Link href="/">
                           <Image
                               
                 src={session?.user.image}
@@ -102,7 +102,7 @@ const Nav = () => {
                       
         {toggleDropDown && (
       <div className="dropdown z-50">
-      <Link href="/profile" 
+      <Link href="/" 
            className="tracking-wide text-md text-primary-orange hover:text-amber-400 font-semibold">
        My Profile
        </Link>
