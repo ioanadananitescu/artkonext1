@@ -1,10 +1,17 @@
 'use client';
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { commerce } from '@lib/commerce';
+import Navbar from '@components/NavBar';
 
 
 
+
+
+
+const Paintings = () => {
+
+    
 const [products, setProducts]=useState([]);
 const [cart, setCart] = useState({});
 // const [featured, setFeatured] = useState([]);
@@ -60,64 +67,59 @@ useEffect(()=>{
    
 },[])
 
-console.log(products);
+    console.log(products);
+
+ 
+    
+    return (
+        <>
+            <Navbar/>
+            <div class="flex items-center justify-center py-4 md:py-8 flex-wrap space-x-2">
+
+            <button type="button" className="outline_btn">All categories</button>
+    <button type="button" class="outline_btn">Shoes</button>
+    <button type="button" class="outline_btn">Bags</button>
+    <button type="button" class="outline_btn">Electronics</button>
+    <button type="button" class="outline_btn">Gaming</button>
 
 
-const Paintings = () => {
-  return (
-    <div id="default-carousel" class="relative w-full" data-carousel="slide">
-  {/*   //Carousel wrapper  */}
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-       {/*   //Item 1 */}
-              <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                  {products.map((product) => (
-                      <img key={product.id} src={product.image.url}
-                          className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                      alt="..."/>
-                      
 
-                  ))}
+
+            </div>
+
+
+            <div class=" grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {products.map((product) => (
+                   
+                    <div className="grid">
+
+                    <div key={product.key} className="max-w-sm bg-marron-oscuro/20 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <a href="#">
+                            <img className="h-auto max-w-full rounded-t-lg" src={product.image.url} alt="product image" />
+                        </a>
+                        <div className="px-2 pb-5">
+                            <a href="#">
+                                <h5 class="text-md  tracking-tight text-gray-900 dark:text-white">{product.name}</h5>
+                            </a>
+     
+                            <div className="flex items-center justify-between ">
+                                <span className="text-sm text-gray-900 dark:text-white">{product.description.replace(/(<([^>]+)>)/gi, "")}</span>
+                                <a href="#"
+                                    className="text-white bg-marron-oscuro 
+                                    hover:bg-marron-masclaro focus:ring-4
+                                    focus:outline-none
+                                    focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center
+                                    dark:bg-marron-muyclaro dark:hover:bg-marron-clarisimo
+                                    dark:focus:ring-blue-800">See more</a>
+                            </div>
+                        </div>
+                        </div> 
+                    </div>    
+                ))}
+                </div>
                   
-        </div>
-        {/* <!-- Item 2 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-        {/* <!-- Item 3 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-        {/* <!-- Item 4 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-        {/* <!-- Item 5 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-    </div>
-    {/* <!-- Slider indicators --> */}
-    <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-    </div>
-    {/* <!-- Slider controls --> */}
-    <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
-</div>
+</>
+      
   )
 }
 
