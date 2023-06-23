@@ -90,18 +90,21 @@ useEffect(()=>{
 {/* 
             <div class=" grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> */}
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4"  > 
+              <div className="gap-8 xs:columns-1 md:columns-3 sm:columns-2 "  > 
                        
 
                 {products.map((product) => (
-                         <div className="grid gap-1">
-                   
-                        <div key={product.key}>
+                        
+           <div className="py-3">
+                        
                             <a href="#">
-                                <img className="h-auto max-w-full rounded-lg" src={product.image.url} alt="product image" />
-                            </a>
+                                <img key={product.key} className="max-h-72 break-inside max-w-full rounded-lg" src={product.image.url} alt="product image" />
+                        </a>
+                        <p className="text-md  tracking-tight text-gray-900 dark:text-white">{product.name}</p>
+                        <p className="text-sm text-gray-900 dark:text-white">{product.description.replace(/(<([^>]+)>)/gi, "")}</p>
                         </div>
-                        </div>
+                       
+                        
                     ))}
                     </div>
                       {/*  <div >
