@@ -72,6 +72,23 @@
   }
 }
 
+
+@layer utilities {
+  @variants responsive {
+      .masonry-3-col {
+          column-count: 3;
+          column-gap: 1em;
+      }
+      .masonry-2-col {
+          column-count: 2;
+          column-gap: 1em;
+      }
+      .break-inside {
+          break-inside: avoid;
+      }
+  }
+}
+
 /* Tailwind Styles */
 
 .app {
@@ -135,7 +152,7 @@
 }
 
 .prompt_layout {
-  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3 ;
 }
 
 /* Feed Component */

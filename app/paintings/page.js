@@ -87,17 +87,24 @@ useEffect(()=>{
 
             </div>
 
+{/* 
+            <div class=" grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> */}
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4"  > 
+                       
 
-            <div class=" grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {products.map((product) => (
+                         <div className="grid gap-1">
                    
-                    <div className="grid">
-
-                    <div key={product.key} className="max-w-sm bg-marron-oscuro/20 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img className="h-auto max-w-full rounded-t-lg" src={product.image.url} alt="product image" />
-                        </a>
-                        <div className="px-2 pb-5">
+                        <div key={product.key}>
+                            <a href="#">
+                                <img className="h-auto max-w-full rounded-lg" src={product.image.url} alt="product image" />
+                            </a>
+                        </div>
+                        </div>
+                    ))}
+                    </div>
+                      {/*  <div >
                             <a href="#">
                                 <h5 class="text-md  tracking-tight text-gray-900 dark:text-white">{product.name}</h5>
                             </a>
@@ -110,13 +117,12 @@ useEffect(()=>{
                                     focus:outline-none
                                     focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center
                                     dark:bg-marron-muyclaro dark:hover:bg-marron-clarisimo
-                                    dark:focus:ring-blue-800">See more</a>
+                                    dark:focus:ring-blue-800">See more</a> 
                             </div>
-                        </div>
-                        </div> 
-                    </div>    
-                ))}
-                </div>
+                        </div>  */}
+                        
+                    
+                  
                   
 </>
       
