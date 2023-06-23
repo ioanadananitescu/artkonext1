@@ -98,7 +98,7 @@ useEffect(()=>{
            <div className="py-3">
                         
                             <a href="#">
-                                <img key={product.key} className="max-h-72 break-inside max-w-full rounded-lg" src={product.image.url} alt="product image" />
+                                <img key={product.key} className="h-auto break-inside max-w-full rounded-lg" src={product.image.url} alt="product image" />
                         </a>
                         <p className="text-md  tracking-tight text-gray-900 dark:text-white">{product.name}</p>
                         <p className="text-sm text-gray-900 dark:text-white">{product.description.replace(/(<([^>]+)>)/gi, "")}</p>
