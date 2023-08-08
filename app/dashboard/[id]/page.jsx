@@ -25,7 +25,7 @@ const UserProfile = ({ params }) => {
   return (
     <Profile
       name={userName}
-      desc={`${userName}'s dashboard.`}
+      desc={`${userName}'s art.`}
       data={userPosts}
     />
   );

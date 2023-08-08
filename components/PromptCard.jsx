@@ -29,7 +29,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   return (
 
     <div className="flex flex-col ">
-    <div className="bg-white shadow-md  rounded-3xl p-4">
+    <div className="shadow-md  rounded-3xl p-4">
         <div className="flex-none lg:flex">
           <img className="w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl" src={post.imageUrl} alt='uploaded art image' />
         </div>
