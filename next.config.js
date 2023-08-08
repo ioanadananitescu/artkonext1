@@ -30,7 +30,11 @@ const nextConfig = {
         topLevelAwait: true,
       }
       return config
-    }
+    },
+    
+  
+      output: 'export',
+    
   }
   
   module.exports = nextConfig
