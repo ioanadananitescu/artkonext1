@@ -57,26 +57,33 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
               </p>
            
             </div>
+            
+          
           </div>
            
                         
-                        <p className="mt-3"></p>
+          <p className="mt-3"></p>
+          <div className="flex flex-col">
                         <div className="flex py-4  text-sm text-gray-600">
                             <div className="flex-1 inline-flex items-center">
                           
               <p className='font-inter text-sm blue_gradient cursor-pointer'
                onClick={() => handleTagClick && handleTagClick(post.tag)}>Tags: #{post.tag}</p>
+              </div>
+              
+             
+          
             </div>
-            
-            <div class="flex-1 inline-flex items-center">
+            <div className="flex flex-col">
             <p className='font-inter text-sm text-gray-500'>
                 {/* {post.creator?.email} */}
                Size: {post.size}
               </p>
 
-              <p class="">Medium: {post.medium}</p>
-            </div>
-          </div>
+              <p class="font-inter text-sm text-gray-700">Medium: {post.medium}</p>
+              </div>
+              </div>
+          
           <div class="flex p-4 pb-2 border-t border-gray-200 "></div>
                         <div class="flex space-x-3 text-sm font-medium">
                             <div class="flex-auto flex space-x-3">
