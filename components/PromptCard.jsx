@@ -33,7 +33,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
       <div className="flex flex-wrap ">
        <div className="w-full flex-none text-xs text-blue-700 font-medium ">
          </div>
-         <h2 className='flex-auto text-lg font-medium'>{post.prompt}</h2>
+         <h2 className='flex-auto text-lg font-medium'>{post.title}</h2>
          </div>
               {/* //logged // creator user data                  */}
            <div
@@ -41,22 +41,21 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
         onClick={handleProfileClick}
           >
         
-           <Image
+         {/*   <Image
               src={post.creator?.image}
-              alt='user_image'
+              alt='post creator image.Not the artist image'
               width={40}
               height={40}
               className='rounded-full object-contain'
-            />
+            /> */}
 
             <div className='flex flex-col'>
               <p className='font-satoshi font-semibold text-gray-900'>
+                {post.artist}
               
-                {post.creator?.username}
+                {/* {post.creator?.username} */}
               </p>
-            <p className='font-inter text-sm text-gray-500'>
-                {post.creator?.email}
-              </p>
+           
             </div>
           </div>
            
@@ -70,7 +69,10 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
             </div>
             
             <div class="flex-1 inline-flex items-center">
-          
+            <p className='font-inter text-sm text-gray-500'>
+                {/* {post.creator?.email} */}
+               Size: {post.size}
+              </p>
 
               <p class="">Medium: {post.medium}</p>
             </div>

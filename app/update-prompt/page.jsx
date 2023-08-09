@@ -14,7 +14,7 @@ const UpdatePrompt = () => {
 
   const [imgUrl, setImgUrl] = useState();
 
-  const [post, setPost] = useState({ prompt: "", tag: "", medium:"", imageUrl:""});
+  const [post, setPost] = useState({ title:"", prompt: "", artist:"", tag: "", size:"", medium:"", imageUrl:""});
   const [submitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -23,8 +23,11 @@ const UpdatePrompt = () => {
       const data = await response.json();
 
       setPost({
+        title:data.title,
         prompt: data.prompt,
+        artist:data.artist,
         tag: data.tag,
+        size:data.size,
         medium: data.medium, 
         imageUrl:data.imageUrl
       });
@@ -75,8 +78,11 @@ const UpdatePrompt = () => {
       const response = await fetch(`/api/prompt/${promptId}`, {
         method: "PATCH",
         body: JSON.stringify({
-          prompt:post.prompt,
-          tag:post.tag,
+          title:post.title,
+          prompt: post.prompt,         
+          tag: post.tag,
+          artist: post.artist,
+          size:post.size,
           medium:post.medium, 
           imageUrl: imgUrl?imgUrl: post.imageUrl 
         }),

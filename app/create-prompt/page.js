@@ -12,7 +12,7 @@ const CreatePrompt = () => {
   const { data: session } = useSession();
   const ruter = useRouter();
   const [submitting, setIsSubmitting] = useState(false);
-  const [post, setPost] = useState({ prompt: "", tag: "", medium:"", imageUrl:"" });
+  const [post, setPost] = useState({ title:"", prompt: "", artist:"", tag: "", size:"", medium:"", imageUrl:"" });
   const [selectedImage, setSelectedImage] = useState(null);
   const [imgUrl, setImgUrl] = useState({ imgUrl: "" });
 
@@ -27,9 +27,12 @@ const CreatePrompt = () => {
         const response = await fetch("/api/prompt/new", {
           method: "POST",
           body: JSON.stringify({
+            title:post.title,
             prompt: post.prompt,
             userId: session?.user.id,
+            artist:post.artist,
             tag: post.tag,
+            size:post.size,
             medium: post.medium,
             imageUrl:imgUrl
           }),

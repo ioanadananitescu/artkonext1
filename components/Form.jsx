@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { medium } from './data';
+import { size } from './data';
 
 
 
@@ -50,8 +51,7 @@ const Form = ({ session, type, post, setPost, submitting, handleSubmit, imgUrl }
         <span className='marron_gradient'>{type} Work</span>
       </h1>
       <p className='desc text-left max-w-md'>
-        {type} and share amazing prompts with the world, and let your
-        imagination run wild with any AI-powered platform
+        {type} and free your imagination.
       </p>
 
       <form
@@ -75,17 +75,44 @@ const Form = ({ session, type, post, setPost, submitting, handleSubmit, imgUrl }
             placeholder='Image'
             required
             className='form_input'
+            />
+            
+          </label>
+          <label>
+          <span className='font-satoshi font-semibold text-base text-gray-700'>
+          Title
+          </span>
+          <textarea
+            value={post.title}
+            onChange={(e) => setPost({ ...post, title: e.target.value })}
+            placeholder='This will be the title. Make it SHORT.'
+            required
+            className='form_textarea '
           />
           </label>
+          
         <label>
           <span className='font-satoshi font-semibold text-base text-gray-700'>
             Description
           </span>
-
           <textarea
             value={post.prompt}
             onChange={(e) => setPost({ ...post, prompt: e.target.value })}
             placeholder='Write your post here'
+            required
+            className='form_textarea '
+          />
+          </label>
+          
+
+        <label>
+          <span className='font-satoshi font-semibold text-base text-gray-700'>
+           Artist name
+          </span>
+          <textarea
+            value={post.artist}
+            onChange={(e) => setPost({ ...post, artist: e.target.value })}
+            placeholder='Your name. If you are acting in name of another artist, please provide the name of the artist.'
             required
             className='form_textarea '
           />
@@ -108,7 +135,25 @@ const Form = ({ session, type, post, setPost, submitting, handleSubmit, imgUrl }
           />
           </label>
           
+          
           <label htmlFor='dropdown'>Select a value:     
+<select 
+value={post.size}
+className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+id="grid-medium"
+onChange={(e)=>
+    setPost({...post, size:e.target.value})
+} 
+placeholder="Select a size that better fits your art"
+required>
+    {size.map((e)=>(
+    <option key={e.id} value={e.name}>{e.name}</option>
+    ))}
+</select>
+          </label>
+
+          
+          <label htmlFor='dropdown'>Select a medium:     
 <select 
 value={post.medium}
 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
@@ -123,6 +168,7 @@ required>
     ))}
 </select>
           </label>
+
 
   
     

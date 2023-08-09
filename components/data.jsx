@@ -1,51 +1,72 @@
-export const medium= [
+export const size = [
     {
         id: 1,
-        name: 'oil'
+        name: 'Small'
+    },
+    {
+        id: 2,
+        name: 'Medium'
+    },
+    {
+        id: 3,
+        name: 'Big'
+    },
+    {
+        id: 4,
+        name: 'Large'
+    }
+];
+
+
+
+export const medium = [
+    {
+        id: 1,
+        name: 'Oil'
     }, 
     {
         id: 2, 
-        name: 'watercolor'
+        name: 'Watercolor'
     }, 
     {
         id: 3,
-        name:'drawing'
+        name:'Drawing'
     }, 
     {
         id: 4, 
-        name: 'sculpture'
+        name: 'Sculpture'
     },
     {
         id: 5, 
-        name: 'acrylic'
+        name: 'Acrylic'
     }, 
     {
     id: 6, 
-    name: 'digital'
+    name: 'Digital'
 }, 
 {
     id: 7, 
-    name: 'poster'
+    name: 'Poster'
 }, 
 {
     id: 8, 
-    name: 'gesso'
+    name: 'Gesso'
 }, 
 {
     id: 9, 
-    name: 'marker'
+    name: 'Marker'
 }, 
 {
     id: 10, 
-    name: 'textile'
+    name: 'Textile'
 }, 
 {
 id: 11, 
-name: 'photo'
+name: 'Photo'
 }, 
 {
 id: 12, 
-name: 'ballpoint pen'
+name: 'Ballpoint pen'
 }, 
 ];
 export const select =[
