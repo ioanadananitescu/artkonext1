@@ -67,6 +67,7 @@ const Nav = () => {
             </Link>
             </div>
     ):
+    (
     <>
     {providers && 
     Object.values(providers).map((provider)=>(
@@ -82,8 +83,9 @@ const Nav = () => {
 
         </button>
     ))}
+                          
     
-    </>}
+    </>)}
 
           </div>
           
