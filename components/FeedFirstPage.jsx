@@ -23,9 +23,9 @@ const FeedFirstPage = () => {
   const [allPosts, setAllPosts] = useState([]);
 
   // Search states
-  const [searchText, setSearchText] = useState("");
+/*   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
-  const [searchedResults, setSearchedResults] = useState([]);
+  const [searchedResults, setSearchedResults] = useState([]); */
   
 
   const fetchPosts = async () => {
@@ -41,7 +41,7 @@ const FeedFirstPage = () => {
 
   console.log(allPosts);
   
-
+/* 
   const filterPrompts = (searchtext) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
     return allPosts.filter(
@@ -71,11 +71,11 @@ const FeedFirstPage = () => {
     const searchResult = filterPrompts(tagName);
     setSearchedResults(searchResult);
   };
-
+ */
  
   return (
     <section className='mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2'>
-      <form className='relative w-full gap-3 flex-center'>
+     {/*  <form className='relative w-full gap-3 flex-center'>
         <input
           type='text'
           placeholder='Search for a tag or a username'
@@ -86,16 +86,16 @@ const FeedFirstPage = () => {
         />
       </form>
 
-      {/* All Prompts */}
-      {searchText ? (
+    
+  {/*     {searchText ? (
         <PromptCardList
           data={searchedResults}
         handleTagClick={handleTagClick}
          
         />
-      ) : (
+      ) : ( */} 
         <PromptCardList data={allPosts} handleTagClick={handleTagClick} />
-      )}
+      
     </section>
   );
 };
