@@ -12,11 +12,8 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
 
   const [copied, setCopied] = useState("");
 
-  const handleProfileClick = () => {
-    console.log(post);
-
+  const handleProfileClick = () => {   
     if (post.creator._id === session?.user.id) return router.push("/dashboard");
-
     router.push(`/dashboard/${post.creator._id}?name=${post.creator.username}`);
   };
 
@@ -27,42 +24,39 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   };
 
   return (
-
-    <div className="flex flex-col ">
-    <div className="shadow-md  rounded-3xl p-4">
-        <div className="flex-none lg:flex">
-          <img className="w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl" src={post.imageUrl} alt='uploaded art image' />
+<div className="flex flex-col ">
+<div className="shadow-md  rounded-3xl p-4">
+  <div className="flex-none lg:flex">
+    <img className="w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl" src={post.imageUrl} alt='uploaded art image' />
         </div>
-        <div className="flex-auto ml-3 justify-evenly py-2">
-                        <div className="flex flex-wrap ">
-                            <div className="w-full flex-none text-xs text-blue-700 font-medium ">
-
-                            </div>
-                            <h2 className='flex-auto text-lg font-medium'>{post.prompt}</h2>
-                        </div>
+    <div className="flex-auto ml-3 justify-evenly py-2">
+      <div className="flex flex-wrap ">
+       <div className="w-full flex-none text-xs text-blue-700 font-medium ">
+         </div>
+         <h2 className='flex-auto text-lg font-medium'>{post.prompt}</h2>
+         </div>
               {/* //logged // creator user data                  */}
-              <div
-            className='flex-1 flex justify-start items-center gap-3 cursor-pointer'
-            onClick={handleProfileClick}
+           <div
+        className='flex-1 flex justify-start items-center gap-3 cursor-pointer'
+        onClick={handleProfileClick}
           >
-
-           {/* //cretor post profile image, if he does one
-            <Image
-              src={post.creator.image}
+        
+           <Image
+              src={post.creator?.image}
               alt='user_image'
               width={40}
               height={40}
               className='rounded-full object-contain'
-            /> */}
+            />
 
             <div className='flex flex-col'>
               <p className='font-satoshi font-semibold text-gray-900'>
               
-                {post.creator.username}
+                {post.creator?.username}
               </p>
-             {/*  <p className='font-inter text-sm text-gray-500'>
-                {post.creator.email}
-              </p> */}
+            <p className='font-inter text-sm text-gray-500'>
+                {post.creator?.email}
+              </p>
             </div>
           </div>
            
@@ -85,7 +79,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
                         <div class="flex space-x-3 text-sm font-medium">
                             <div class="flex-auto flex space-x-3">
             
-              {session?.user.id === post.creator._id && pathName === "/dashboard" && (
+              {session?.user.id === post.creator?._id && pathName === "/dashboard" && (
                 <div>
             <button onClick={handleEdit}
             className='mb-2 md:mb-0 bg-white px-5 py-2 shadow-sm tracking-wider border text-gray-600 rounded-full hover:bg-gray-100 inline-flex items-center space-x-2'>
