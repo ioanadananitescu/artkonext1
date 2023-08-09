@@ -24,6 +24,8 @@ const FeedFirstPage = () => {
 
   // Search states
   const [searchText, setSearchText] = useState("");
+  const [searchTimeout, setSearchTimeout] = useState(null);
+  const [searchedResults, setSearchedResults] = useState([]);
   
 
   const fetchPosts = async () => {
@@ -50,12 +52,27 @@ const FeedFirstPage = () => {
     );
   };
 
- 
+  const handleSearchChange = (e) => {
+    clearTimeout(searchTimeout);
+    setSearchText(e.target.value);
 
-  const handleTagClick = () => {
-   
+    // debounce method
+    setSearchTimeout(
+      setTimeout(() => {
+        const searchResult = filterPrompts(e.target.value);
+        setSearchedResults(searchResult);
+      }, 500)
+    );
   };
 
+  const handleTagClick = (tagName) => {
+    setSearchText(tagName);
+
+    const searchResult = filterPrompts(tagName);
+    setSearchedResults(searchResult);
+  };
+
+ 
   return (
     <section className='mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2'>
       <form className='relative w-full gap-3 flex-center'>
@@ -72,6 +89,8 @@ const FeedFirstPage = () => {
       {/* All Prompts */}
       {searchText ? (
         <PromptCardList
+          data={searchedResults}
+        handleTagClick={handleTagClick}
          
         />
       ) : (
