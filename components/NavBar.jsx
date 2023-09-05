@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link';
 import { useState } from 'react';
+import ThemeSwitch from './ThemeSwitch';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,8 +13,9 @@ const Navbar = () => {
   return (
     <nav className="absolute   w-screen z-40">
       {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
-        
-                  <div className="hidden lg:block translate-y-16">
+     
+      <div className="hidden lg:block translate-y-16">
+  
             <div className="absolute w-full justify-center flex items-baseline space-x-4">
               <Link href="/paintings"className="text-marron-oscuro border-2 border-marron-oscuro hover:bg-marron-muyclaro/60 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Paintings
               </Link>

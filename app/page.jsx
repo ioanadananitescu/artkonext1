@@ -26,7 +26,7 @@ const Home = () => {
             width={1600}
             height={800}
         
-            class="hidden md:max-3xl:block mx-auto left-0 right-0 w-screen"
+            className="hidden md:max-3xl:block mx-auto left-0 right-0 w-screen"
           src="/assets/images/horizontalFeatured.png"
          
           alt="Every week our curators find art to feature." />

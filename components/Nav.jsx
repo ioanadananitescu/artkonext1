@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {useState, useEffect} from 'react';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+import ThemeSwitch from './ThemeSwitch';
 
 
 const Nav = () => {
@@ -42,7 +43,8 @@ const Nav = () => {
         className="object-contain" />
     </Link> 
 {/*/ Desktop Navigaton*/}
-<div className="hidden sm:flex ">
+          <div className="hidden sm:flex ">
+              <ThemeSwitch/>
     {session?.user ? (
         <div className="flex gap-1 md:gap-1">
             <Link href="/create-prompt" 
